@@ -73,6 +73,7 @@ using namespace soundtouch;
 double TDStretchSSE::calcCrossCorrStereo(const float *pV1, const float *pV2) const
 {
     int i;
+    float *pVec1;
     __m128 vSum, *pVec2;
 
     // Note. It means a major slow-down if the routine needs to tolerate 
@@ -103,6 +104,7 @@ double TDStretchSSE::calcCrossCorrStereo(const float *pV1, const float *pV2) con
 
     // Calculates the cross-correlation value between 'pV1' and 'pV2' vectors
     // Note: pV2 _must_ be aligned to 16-bit boundary, pV1 need not.
+    pVec1 = (float*)pV1;
     pVec2 = (__m128*)pV2;
     vSum = _mm_setzero_ps();
 
@@ -110,18 +112,18 @@ double TDStretchSSE::calcCrossCorrStereo(const float *pV1, const float *pV2) con
     for (i = 0; i < overlapLength / 8; i ++) 
     {
         // vSum += pV1[0..3] * pV2[0..3]
-        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pV1),pVec2[0]));
+        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pVec1),pVec2[0]));
 
         // vSum += pV1[4..7] * pV2[4..7]
-        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pV1 + 4), pVec2[1]));
+        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pVec1 + 4), pVec2[1]));
 
         // vSum += pV1[8..11] * pV2[8..11]
-        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pV1 + 8), pVec2[2]));
+        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pVec1 + 8), pVec2[2]));
 
         // vSum += pV1[12..15] * pV2[12..15]
-        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pV1 + 12), pVec2[3]));
+        vSum = _mm_add_ps(vSum, _mm_mul_ps(_MM_LOAD(pVec1 + 12), pVec2[3]));
 
-        pV1 += 16;
+        pVec1 += 16;
         pVec2 += 4;
     }
 
@@ -298,12 +300,12 @@ uint FIRFilterSSE::evaluateFilterStereo(float *dest, const float *source, uint n
     // filter is evaluated for two stereo samples with each iteration, thus use of 'j += 2'
     for (j = 0; j < count; j += 2)
     {
-        const float *pSrc;
+        float *pSrc;
         const __m128 *pFil;
         __m128 sum1, sum2;
         uint i;
 
-        pSrc = source;                      // source audio data
+        pSrc = (float*)source;              // source audio data
         pFil = (__m128*)filterCoeffsAlign;  // filter coefficients. NOTE: Assumes coefficients 
                                             // are aligned to 16-byte boundary
         sum1 = sum2 = _mm_setzero_ps();

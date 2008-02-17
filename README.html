@@ -48,10 +48,10 @@ for more information.</p>
 <h3>2.1. Building in Microsoft Windows</h3>
 <p>Project files for Microsoft Visual C++ 6.0 and Visual C++ .NET are
 supplied with the source code package. Please notice that SoundTouch
-library uses processor-specific optimizations for Pentium III and AMD
+library uses processor-specific optimiations for Pentium III and AMD
 processors that require a processor pack upgrade for
 the Visual Studio 6.0 to be installed in order to support these
-optimizations. The processor pack upgrade can be downloaded from
+optimiations. The processor pack upgrade can be downloaded from
 Microsoft site at this URL:</p>
 <p><a
  href="http://msdn.microsoft.com/vstudio/downloads/tools/ppack/default.aspx">
@@ -74,7 +74,7 @@ creates these directories automatically.
 </p>
 <p>Also other C++ compilers than Visual C++ can be
 used, but project or makefiles then have to be adapted accordingly.
-Performance optimizations are written in Visual C++ compatible
+Performance optimiations are written in Visual C++ compatible
 syntax, they may or may not be compatible with other compilers. If
 using GCC (Gnu C Compiler) compiler package such as DJGPP or Cygwin,
 please see next chapter for instructions. </p>
@@ -83,7 +83,7 @@ please see next chapter for instructions. </p>
 practically any platform supporting GNU compiler (GCC) tools.
 SoundTouch have been tested with gcc version 3.3.4., but it
 shouldn't be very specific about the gcc version. Assembler-level
-performance optimizations for GNU platform are currently available in
+performance optimiations for GNU platform are currently available in
 x86 platforms only, they are automatically disabled and replaced with
 standard C routines in other processor platforms.</p>
 <p>To build and install the binaries, run the
@@ -126,9 +126,9 @@ tested
 to compile in GNU/Linux platform. However, in past it's happened that
 new
 gcc versions aren't necessarily compatible with the assembler setttings
-used in the optimized routines. <b>If you have problems getting the
+used in the optimied routines. <b>If you have problems getting the
 SoundTouch library compiled, try the workaround of disabling the
-optimizations</b> by editing the file "include/STTypes.h" and removing
+optimiations</b> by editing the file "include/STTypes.h" and removing
 the following definition there:</p>
 <blockquote>
   <pre>#define ALLOW_OPTIMIZATIONS 1</pre>
@@ -167,7 +167,7 @@ to process stereo sound as two separate mono channels, this isn't
 recommended because processing the channels separately would
 result in losing the phase coherency between the channels, which
 consequently would ruin the stereo effect.</p>
-<p>Sample rates between 8000-48000Hz are
+<p>Sample rates between 8000-48000H are
 supported.</p>
 <h3>3.2. Processing latency</h3>
 <p>The processing and latency constraints of
@@ -179,8 +179,8 @@ used. If the rate transposing effect alone is used, the latency
 requirement
 is much shorter, see section 'About algorithms'.</li>
   <li>Processing CD-quality sound (16bit stereo
-sound with 44100Hz sample rate) in real-time or faster is possible
-starting from processors equivalent to Intel Pentium 133Mhz or better,
+sound with 44100H sample rate) in real-time or faster is possible
+starting from processors equivalent to Intel Pentium 133Mh or better,
 if using the "quick" processing algorithm. If not using the "quick"
 mode or
 if floating point sample data are being used, several times more CPU
@@ -228,7 +228,7 @@ original duration but increased pitch.</li>
 </ul>
 <h3>3.4 Tuning the algorithm parameters</h3>
 <p>The time-stretch algorithm has few
-parameters that can be tuned to optimize sound quality for
+parameters that can be tuned to optimie sound quality for
 certain application. The current default parameters have been
 chosen by iterative if-then analysis (read: "trial and error")
 to obtain best subjective sound quality in pop/rock music
@@ -278,7 +278,7 @@ smaller value on this.</li>
 <p>Notice that these parameters can also be
 set during execution time with functions "<strong>TDStretch::setParameters()</strong>"
 and "<strong>SoundTouch::setSetting()</strong>".</p>
-<p>The table below summarizes how the
+<p>The table below summaries how the
 parameters can be adjusted for different applications:</p>
 <table border="1">
   <tbody>
@@ -344,8 +344,8 @@ value increases computation burden</td>
     </tr>
   </tbody>
 </table>
-<h3>3.5 Performance Optimizations </h3>
-<p><strong>General optimizations:</strong></p>
+<h3>3.5 Performance Optimiations </h3>
+<p><strong>General optimiations:</strong></p>
 <p>The time-stretch routine has a 'quick' mode
 that substantially speeds up the algorithm but may degrade the
 sound quality by a small amount. This mode is activated by
@@ -354,22 +354,22 @@ of SETTING_USE_QUICKSEEK and value "1", i.e. </p>
 <blockquote>
   <p>setSetting(SETTING_USE_QUICKSEEK, 1);</p>
 </blockquote>
-<p><strong>CPU-specific optimizations:</strong></p>
+<p><strong>CPU-specific optimiations:</strong></p>
 <ul>
-  <li>Intel MMX optimized routines are used with
+  <li>Intel MMX optimied routines are used with
 compatible CPUs when 16bit integer sample type is used. MMX
-optimizations are available both in Win32 and Gnu/x86 platforms.
+optimiations are available both in Win32 and Gnu/x86 platforms.
 Compatible processors are Intel PentiumMMX and later; AMD K6-2, Athlon
 and later. </li>
-  <li>Intel SSE optimized routines are used with
+  <li>Intel SSE optimied routines are used with
 compatible CPUs when floating point sample type is used. SSE
-optimizations are currently implemented for Win32 platform only.
+optimiations are currently implemented for Win32 platform only.
 Processors compatible with SSE extension are Intel processors starting
 from Pentium-III, and AMD processors starting from Athlon XP. </li>
-  <li>AMD 3DNow! optimized routines are used with
+  <li>AMD 3DNow! optimied routines are used with
 compatible CPUs when floating point sample type is used, but SSE
-extension isn't supported . 3DNow! optimizations are currently
-implemented for Win32 platform only. These optimizations are used in
+extension isn't supported . 3DNow! optimiations are currently
+implemented for Win32 platform only. These optimiations are used in
 AMD K6-2 and Athlon (classic) CPU's; better performing SSE routines are
 used with AMD processor starting from Athlon XP. </li>
 </ul>
@@ -485,11 +485,11 @@ using either integer (e.g. "-tempo=123") or decimal (e.g.
   <li>The &quot;-naa&quot; and/or "-quick" switches can be
 used to reduce CPU usage while compromising some sound quality </li>
   <li>The BPM detection algorithm works by detecting
-repeating low-frequency (&lt;250Hz) sound patterns and thus works
+repeating low-frequency (&lt;250H) sound patterns and thus works
 mostly with most rock/pop music with bass or drum beat. The BPM
 detection doesn't work on pieces such as classical music without
 distinct, repeating bass frequency patterns. Also pieces with varying
-tempo, varying bass patterns or very complex bass patterns (jazz, hiphop) may produce odd BPM readings. <br>
+tempo, varying bass patterns or very complex bass patterns (ja, hiphop) may produce odd BPM readings. <br>
     <br>
 In cases when the bass pattern drifts a bit around a nominal beat rate
 (e.g. drummer is again drunken :), the BPM algorithm may report
@@ -532,7 +532,7 @@ of the file &quot;orig.wav&quot; and adjusts the tempo to match
 
 <p><strong>v1.3.2:</strong></p>
 <ul>
-<li>Bugfixes: Using uninitialized variables, GNU build scripts, compiler errors
+<li>Bugfixes: Using uninitialied variables, GNU build scripts, compiler errors
   due to 'const' keyword mismatch.</li>
 <li>Some source code cleanup</li>
 
@@ -542,10 +542,10 @@ of the file &quot;orig.wav&quot; and adjusts the tempo to match
 </strong></p>
 <ul>
 <li>Changed static class declaration to GCC 4.x compiler compatible syntax.</li>
-<li>Enabled MMX/SSE-optimized routines also for GCC compilers. Earlier
-the MMX/SSE-optimized routines were written in compiler-specific inline 
+<li>Enabled MMX/SSE-optimied routines also for GCC compilers. Earlier
+the MMX/SSE-optimied routines were written in compiler-specific inline 
 assembler, now these routines are migrated to use compiler intrinsic 
-syntax which allows compiling the same MMX/SSE-optimized source code with 
+syntax which allows compiling the same MMX/SSE-optimied source code with 
 both Visual C++ and GCC compilers. </li>
 <li>Set floating point as the default sample format and added switch to 
 the GNU configure script for selecting the other sample format.</li>
@@ -559,13 +559,13 @@ the GNU configure script for selecting the other sample format.</li>
 error </li>
   <li>Implemented separate processing routines for integer and
 floating arithmetic to allow improvements to floating point routines
-(earlier used algorithms mostly optimized for integer arithmetic also
+(earlier used algorithms mostly optimied for integer arithmetic also
 for floating point samples) </li>
   <li>Fixed a bug that distorts sound if sample rate changes during the
 sound stream </li>
-  <li>Fixed a memory leak that appeared in MMX/SSE/3DNow! optimized
+  <li>Fixed a memory leak that appeared in MMX/SSE/3DNow! optimied
 routines </li>
-  <li>Reduced redundant code pieces in MMX/SSE/3DNow! optimized
+  <li>Reduced redundant code pieces in MMX/SSE/3DNow! optimied
 routines vs. the standard C routines.</li>
   <li>MMX routine incompatibility with new gcc compiler versions </li>
   <li>Other miscellaneous bug fixes </li>
@@ -583,8 +583,8 @@ SAMPLETYPE definitions.</li>
 <p><strong>v1.2.0: </strong></p>
 <ul>
   <li>Added support for 32bit floating point sample
-data type with SSE/3DNow! optimizations for Win32 platform (SSE/3DNow!
-optimizations currently not supported in GCC environment)</li>
+data type with SSE/3DNow! optimiations for Win32 platform (SSE/3DNow!
+optimiations currently not supported in GCC environment)</li>
   <li>Replaced 'make-gcc' script for GNU environment
 by master Makefile</li>
   <li>Added time-stretch routine configurability to
@@ -595,8 +595,8 @@ SoundTouch main class</li>
 <ul>
   <li>Moved SoundTouch under lesser GPL license (LGPL). This allows using SoundTouch library in programs that aren't
 released under GPL license. </li>
-  <li>Changed MMX routine organization so that MMX
-optimized routines are now implemented in classes that are derived from
+  <li>Changed MMX routine organiation so that MMX
+optimied routines are now implemented in classes that are derived from
 the basic classes having the standard non-mmx routines. </li>
   <li>MMX routines to support gcc version 3. </li>
   <li>Replaced windows makefiles by script using the .dsw files </li>

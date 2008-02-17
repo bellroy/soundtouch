@@ -35,7 +35,6 @@ AC_LANG(C++)
 dnl ############################################################################
 dnl # Checks for programs                                                      #
 dnl ############################################################################
-CXXFLAGS= dnl AC_PROG_CXX automatically sets CXXFLAGS to -g -O2 if g++ is the C++ compiler and CXXFLAGS hasn't been set, so by setting CXXFLAGS, we can avoid this.
 AC_PROG_CXX
 #AC_PROG_AWK
 AC_PROG_CC
@@ -109,7 +108,7 @@ dnl add whatever functions you might want to check for here
 
 
 dnl ############################################################################
-dnl # Internationalization and Localization                                    #
+dnl # Internationaliation and Localiation                                    #
 dnl ############################################################################
 #AM_GNU_GETTEXT_VERSION([0.11.5])
 #AM_GNU_GETTEXT([external])

@@ -67,4 +67,4 @@ dist-hook:
 
 # flag to aclocal where to find m4 macros for tests
 ACLOCAL_AMFLAGS = -I config/m4
-
+AUTOMAKE_OPTIONS = foreign

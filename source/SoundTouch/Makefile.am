@@ -30,13 +30,18 @@ noinst_HEADERS=AAFilter.h cpu_detect.h cpu_detect_x86_gcc.cpp FIRFilter.h RateTr
 
 lib_LTLIBRARIES=libSoundTouch.la
 # the mmx_gcc.cpp and cpu_detect_x86_gcc.cpp may need to be conditionally included here from things discovered in configure.ac
-libSoundTouch_la_SOURCES=AAFilter.cpp FIRFilter.cpp FIFOSampleBuffer.cpp mmx_optimized.cpp sse_optimized.cpp RateTransposer.cpp SoundTouch.cpp TDStretch.cpp cpu_detect_x86_gcc.cpp
+# libSoundTouch_la_SOURCES=AAFilter.cpp FIRFilter.cpp FIFOSampleBuffer.cpp mmx_optimized.cpp sse_optimized.cpp RateTransposer.cpp SoundTouch.cpp TDStretch.cpp cpu_detect_x86_gcc.cpp
+libSoundTouch_la_SOURCES=AAFilter.cpp FIRFilter.cpp FIFOSampleBuffer.cpp RateTransposer.cpp SoundTouch.cpp TDStretch.cpp cpu_detect_x86_gcc.cpp
 
 
 # ??? test for -fcheck-new in configure.ac
 # other compiler flags to add
-AM_CXXFLAGS=-O3 -msse -fcheck-new -I../../include
+# AM_CXXFLAGS=-O3 -msse -fcheck-new -I../../include
+AM_CXXFLAGS=-O3 -fcheck-new -I../../include
 
 # other linking flags to add
-#libSoundTouch_la_LIBADD=
+noinst_LTLIBRARIES = libSoundTouchOpt.la
+libSoundTouch_la_LIBADD = libSoundTouchOpt.la
+libSoundTouchOpt_la_SOURCES = mmx_optimized.cpp sse_optimized.cpp 
+libSoundTouchOpt_la_CXXFLAGS = -O3 -msse2 -fcheck-new -I../../include
 

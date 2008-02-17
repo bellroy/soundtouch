@@ -32,19 +32,6 @@
 INCLUDES=-I$(top_srcdir)/include
 
 
-## CXXFLAGS is also automatically added to the $(CXX) macro at compile time, and
-## is passed down to the children as well
-## I list these here in case there needs to always be some flags passed to the compiler
-CXXFLAGS=@CXXFLAGS@
-
-
-## LDFLAGS will be added at link time
-## note that the -l flags are set by the LIBS macro that is set by configure
-## This line doesn't need to be here, configure will add LDFLAGS on it's own,
-## but I'm leaving here as a place to add LDFLAGS if so desired
-LDFLAGS=@LDFLAGS@
-
-
 # doc directory
 pkgdocdir=$(prefix)/doc/@PACKAGE@
 

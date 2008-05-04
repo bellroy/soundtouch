@@ -67,7 +67,7 @@ using namespace soundtouch;
 
 
 // Table for the hierarchical mixing position seeking algorithm
-static int _scanOffsets[4][24]={
+static const int _scanOffsets[4][24]={
     { 124,  186,  248,  310,  372,  434,  496,  558,  620,  682,  744, 806, 
       868,  930,  992, 1054, 1116, 1178, 1240, 1302, 1364, 1426, 1488,   0}, 
     {-100,  -75,  -50,  -25,   25,   50,   75,  100,    0,    0,    0,   0,

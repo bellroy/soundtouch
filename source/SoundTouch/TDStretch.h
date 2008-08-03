@@ -192,10 +192,10 @@ public:
     /// 'seekwindowMS' = seeking window length for scanning the best overlapping 
     ///      position
     /// 'overlapMS' = overlapping length
-    void setParameters(int sampleRate,                             ///< Samplerate of sound being processed (Hz)
-                       int sequenceMS = DEFAULT_SEQUENCE_MS,       ///< Single processing sequence length (ms)
-                       int seekwindowMS = DEFAULT_SEEKWINDOW_MS,   ///< Offset seeking window length (ms)
-                       int overlapMS = DEFAULT_OVERLAP_MS          ///< Sequence overlapping length (ms)
+    void setParameters(int sampleRate,          ///< Samplerate of sound being processed (Hz)
+                       int sequenceMS = -1,     ///< Single processing sequence length (ms)
+                       int seekwindowMS = -1,   ///< Offset seeking window length (ms)
+                       int overlapMS = -1       ///< Sequence overlapping length (ms)
                        );
 
     /// Get routine control parameters, see setParameters() function.

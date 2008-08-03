@@ -123,15 +123,11 @@ TDStretch::~TDStretch()
 void TDStretch::setParameters(int aSampleRate, int aSequenceMS, 
                               int aSeekWindowMS, int aOverlapMS)
 {
-    assert(aSampleRate >= 0);
-    assert(aSequenceMS >= 0);
-    assert(aSeekWindowMS >= 0);
-    assert(aOverlapMS >= 0);
-
-    this->sampleRate = aSampleRate;
-    this->sequenceMs = aSequenceMS;
-    this->seekWindowMs = aSeekWindowMS;
-    this->overlapMs = aOverlapMS;
+    // accept only positive parameter values - if negative, use old values instead
+    if (aSampleRate >= 0)   this->sampleRate = aSampleRate;
+    if (aSequenceMS >= 0)   this->sequenceMs = aSequenceMS;
+    if (aSeekWindowMS >= 0) this->seekWindowMs = aSeekWindowMS;
+    if (aOverlapMS >= 0)    this->overlapMs = aOverlapMS;
 
     seekLength = (sampleRate * seekWindowMs) / 1000;
     seekWindowLength = (sampleRate * sequenceMs) / 1000;
@@ -867,7 +863,7 @@ void TDStretch::precalcCorrReferenceMono()
 }
 
 
-// SSE-optimized version of the function overlapStereo
+// Overlaps samples in 'midBuffer' with the samples in 'pInput'
 void TDStretch::overlapStereo(float *pOutput, const float *pInput) const
 {
     int i;

@@ -61,7 +61,7 @@ namespace soundtouch
 /// and vice versa.
 ///
 /// Increasing this value reduces computational burden & vice versa.
-#define DEFAULT_SEQUENCE_MS     82
+#define DEFAULT_SEQUENCE_MS     130
 
 /// Seeking window default length in milliseconds for algorithm that finds the best possible 
 /// overlapping location. This determines from how wide window the algorithm may look for an 
@@ -75,7 +75,7 @@ namespace soundtouch
 /// around, try reducing this setting.
 ///
 /// Increasing this value increases computational burden & vice versa.
-#define DEFAULT_SEEKWINDOW_MS   14
+#define DEFAULT_SEEKWINDOW_MS   25
 
 /// Overlap length in milliseconds. When the chopped sound sequences are mixed back together, 
 /// to form a continuous sound stream, this parameter defines over how long period the two 
@@ -85,7 +85,7 @@ namespace soundtouch
 /// by a large amount, you might wish to try a smaller value on this.
 ///
 /// Increasing this value increases computational burden & vice versa.
-#define DEFAULT_OVERLAP_MS      12
+#define DEFAULT_OVERLAP_MS      8
 
 
 /// Class that does the time-stretch (tempo change) effect for the processed

@@ -134,16 +134,7 @@ RunParameters::RunParameters(const int nParams, const char *paramStr[])
     inFileName = (char*)paramStr[1];
     outFileName = (char*)paramStr[2];
 
-    if (outFileName[0] == '-')
-    {
-        // no outputfile name was given but parameters
-        outFileName = NULL;
-        nFirstParam = 2;
-    }
-    else
-    {
-        nFirstParam = 3;
-    }
+    nFirstParam = 3;
 
     // parse switch parameters
     for (i = nFirstParam; i < nParams; i ++) 

@@ -143,7 +143,15 @@ WavInFile::WavInFile(const char *fileName)
     int hdrsOk;
 
     // Try to open the file for reading
-    fptr = fopen(fileName, "rb");
+    if(strcmp(fileName, "-") == 0)
+    {
+        fptr = stdin;
+    }
+    else
+    {
+        fptr = fopen(fileName, "rb");
+    }
+
     if (fptr == NULL) 
     {
         // didn't succeed
@@ -522,7 +530,16 @@ uint WavInFile::getLengthMS() const
 WavOutFile::WavOutFile(const char *fileName, int sampleRate, int bits, int channels)
 {
     bytesWritten = 0;
-    fptr = fopen(fileName, "wb");
+    
+    if(strcmp(fileName, "-") == 0)
+    {
+        fptr = stdout;
+    }
+    else
+    {
+        fptr = fopen(fileName, "wb");
+    }
+
     if (fptr == NULL) 
     {
         string msg = "Error : Unable to open file \"";

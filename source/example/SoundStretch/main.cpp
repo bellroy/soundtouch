@@ -247,8 +247,6 @@ int main(const int nParams, const char *paramStr[])
     RunParameters *params;
     SoundTouch SoundTouch;
 
-    printf(_helloText, SoundTouch::getVersionString());
-
     try 
     {
         // Parse command line parameters
